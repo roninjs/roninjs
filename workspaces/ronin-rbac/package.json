@@ -1,0 +1,18 @@
+{
+	"name": "ronin-rbac",
+	"version": "0.1.01",
+	"description": "Simple RBAC",
+	"main": "lib/index.js",
+	"scripts": {
+		"test": "node ./test/index.js"
+	},
+	"author": "Peter McKee <peter.mckee@gmail.com>",
+	"license": "ISC",
+	"dependencies": {
+		"lodash": "^4.17.11",
+		"mongodb": "^3.2.1",
+		"restify-errors": "^7.0.0",
+		"ronin-database": "^0.1.0",
+		"ronin-logger": "^0.1.0"
+	}
+}

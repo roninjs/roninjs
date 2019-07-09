@@ -1,0 +1,17 @@
+{
+  "name": "ronin-mocks",
+  "version": "0.1.0",
+  "description": "Ronin mocks",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "local": "nodemon --trace-warnings ./test/index.js"
+  },
+  "author": "Peter McKee",
+  "license": "ISC",
+  "dependencies": {
+    "ronin-logger": "^0.1.0",
+    "ronin-database": "^0.1.0",
+    "ronin-entity": "^0.1.0"
+  }
+}

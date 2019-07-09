@@ -1,0 +1,24 @@
+{
+  "name": "kitchensink",
+  "version": "1.0.0",
+  "description": "Test project for roninjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -w ../../workspaces/ server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "pluralize": "^7.0.0",
+    "ronin-database": "^0.1.0",
+    "ronin-entity": "^0.1.0",
+    "ronin-logger": "^0.1.0",
+    "ronin-rbac": "^0.1.0",
+    "ronin-server": "^0.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
