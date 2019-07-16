@@ -11,8 +11,7 @@ async function connect( url, name = 'default' ) {
 		connections[name] = db.db()
 		return db
 	} catch( err ) {
-		log.error( err )
-		return err
+		throw err
 	}
 }
 

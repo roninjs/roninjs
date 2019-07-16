@@ -1,5 +1,5 @@
 const moment 		= require( 'moment' )
-const errors 		= require( 'restify-errors' )
+const errors = require( 'ronin-errors' )
 const pluralize = require( 'pluralize' )
 const log 			= require( 'ronin-logger' )
 
@@ -33,7 +33,7 @@ function getCollectionName( req ) {
 async function entitySearch( req, res, next ) {
 	const collection = getCollectionName( req )
 	if( !collection ) {
-		return next( new errors.MissingParameterError( `Missing entity name` ) )
+		return next( roninErrors.http.MissingParameterError( `Missing entity name` ) )
 	}
 
 	const query		=	req.query.query 	? JSON.parse( req.query.query ) 	: {}

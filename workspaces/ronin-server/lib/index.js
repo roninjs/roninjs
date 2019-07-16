@@ -41,9 +41,9 @@ function server( config = {} ) {
 				res.locals.error = req.app.get( 'env' ) === 'development' ? err : {}
 	
 				if ( err && err.code ) {
-					res.status( err.status || 500 ).json( err )
+					res.status( err.code || 500 ).json( err )
 				} else {
-					res.status( err.status || 500 ).json( { code: 'error', message: err.message, error: err } )
+					res.status( err.code || 500 ).json( { code: 'error', message: err.message, error: err } )
 				}
 			} )
 	

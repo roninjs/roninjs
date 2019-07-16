@@ -6,7 +6,7 @@ const chalk = require( 'chalk' )
 const TIMESTAMP_FORMAT = 'YYYY-MM-DDTHH:mm:ss:SSSS'
 
 const STATUS = {
-	LOG: 	'LOG',
+	LOG: 		'LOG',
 	DEBUG: 	'DEBUG',
 	INFO: 	'INFO',
 	WARN: 	'WARN',

@@ -1,7 +1,7 @@
 {
   "name": "ronin-server",
   "version": "0.1.01",
-  "description": "Strata rest api server",
+  "description": "Ronin rest api server",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

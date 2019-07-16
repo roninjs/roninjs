@@ -4,5 +4,9 @@ module.exports = {
 	},
 	database: {
 		connectionstring: process.env.DATABASE_CONNECTIONSTRING
+	},
+	rbac: {
+		secret: process.env.RBAC_SECRET,
+		usersCollection: process.env.RBAC_USERS_COLLECTION
 	}
 }
