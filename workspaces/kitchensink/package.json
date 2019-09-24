@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.15",
     "pluralize": "^7.0.0",
     "ronin-database": "^0.1.0",
     "ronin-entity": "^0.1.0",
