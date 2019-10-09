@@ -20,8 +20,6 @@ async function main() {
 			usersCollection: config.rbac.usersCollection
 		})
 
-		server.use( '/services/m/auth', auth.server( server.Router() ) )
-
 		rbac.init({
 			secret: config.rbac.secret,
 			usersCollection: config.rbac.usersCollection,
@@ -37,7 +35,8 @@ async function main() {
 			}
 		})
 
-		server.use( '/services/m/', mocks.server( server.Router() ) )
+		server.use( '/services/m/auth', auth.server( server.Router(), rbac ) )
+		server.use( '/services/m/', mocks.server( server.Router(), rbac ) )
 
 		const result = await server.start()
 		log.info( result )

@@ -1,9 +1,9 @@
 const log = require( 'ronin-logger' )
 
 module.exports = {
-  InternalServerError,
-
-  MissingParameterError
+  ForbiddenError,
+  MissingParameterError,
+  InternalServerError
 }
 
 function base( code, message ) {
@@ -12,10 +12,14 @@ function base( code, message ) {
   return error 
 }
 
-function InternalServerError( msg ) {
-  return base( 500, msg )
+function ForbiddenError( msg = 'Forbidden' ) {
+  return base( 403, msg )
 }
 
 function MissingParameterError( msg ) {
   return base( 409, msg )
+}
+
+function InternalServerError( msg ) {
+  return base( 500, msg )
 }

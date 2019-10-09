@@ -1,7 +1,7 @@
 const _ = require( 'lodash' )
 const log = require( 'ronin-logger' )
 const pluralize = require( 'pluralize' )
-const errors = require( 'restify-errors' )
+const errors = require( 'ronin-errors' )
 const Entity = require( 'ronin-entity' )
 const security = require( './security' )
 
@@ -58,7 +58,7 @@ async function authorizeRequest( permission, req, res, next ) {
 			if( permissionGranted ) {
 				return next()	
 			} else {
-				return next( new errors.ForbiddenError() )
+				return next( new errors.http.ForbiddenError() )
 			}
 			
 		} catch( error ) {
