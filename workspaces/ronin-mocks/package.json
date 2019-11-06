@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "ronin-logger": "^0.1.0",
-    "ronin-database": "^0.1.0",
+    "ronin-database": "^0.1.01",
     "ronin-entity": "^0.1.0",
     "ronin-errors": "^0.1.0"
   }

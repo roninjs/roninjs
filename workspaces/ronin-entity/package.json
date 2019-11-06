@@ -9,7 +9,7 @@
 	"author": "Peter McKee <peter.mckee@gmail.com>",
 	"license": "ISC",
 	"dependencies": {
-		"ronin-database": "^0.1.0",
+		"ronin-database": "^0.1.01",
 		"ronin-logger": "^0.1.0",
 		"mongodb": "^3.2.1"
 	}

@@ -141,7 +141,7 @@ function entityById( req, res, next ) {
 
 }
 
-function entityUpdate( req, res, next ) {
+async function entityUpdate( req, res, next ) {
 	const collection = getCollectionName( req )
 	if( !collection ) {
 		return next( new errors.MissingParameterError( `Missing entity name` ) )
@@ -157,17 +157,18 @@ function entityUpdate( req, res, next ) {
 		return next( new errors.MissingParameterError( `Missing entity object` ) )
 	}
 
-	const withModifiers = req.params.withModifiers
+	const withModifiers = req.params.withModifiers || req.query.withModifiers
 
 	const store = new Entity( collection )
-	return store
-		.updateById( id, update, withModifiers )
-		.then( results => {
+
+	try {
+		const results = await store.updateById( id, update, withModifiers )
+		if( results ) {
 			return store.getById( id ).then( results => res.json({ code: 'success', payload: results }) )
-		})
-		.catch( reason => {
-			return res.json({ code: 'error', payload: reason })
-		})
+		}
+	} catch( reason ) {
+		return res.json({ code: 'error', payload: reason })
+	}
 }
 
 function entityDelete( req, res, next ) {

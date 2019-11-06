@@ -1,7 +1,13 @@
 const log = require( 'ronin-logger' )
 const handler = require( './handlers' )
+const database = require( 'ronin-database' )
 
 function useServer( router, rbac ) {
+
+  const db = database.getConnection()
+  if( !db ) {
+    throw new Error( 'Ronin database connection required. Please create a ronin-database connection before using the ronin-mocks server.' ).stack
+  }
 
   if( rbac ) {
     router.get(  		`/:entity`, 			rbac.can.read(),    handler.entitySearch )
