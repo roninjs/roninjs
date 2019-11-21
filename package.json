@@ -1,5 +1,10 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [ "workspaces/*" ]
+  "workspaces": [
+    "workspaces/*"
+  ],
+  "dependencies": {
+    "command-line-args": "^5.1.1"
+  }
 }

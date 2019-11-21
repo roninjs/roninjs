@@ -1,5 +1,5 @@
 {
-	"name": "@ronin/database",
+	"name": "ronin-database",
 	"version": "0.1.01",
 	"description": "Simple MongoDb connection manager",
 	"main": "lib/index.js",
