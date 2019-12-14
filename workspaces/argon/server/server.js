@@ -1,5 +1,5 @@
 const config    = require( './config' )
-const ronin 		= require( 'ronin-server' )
+const ronin 	= require( 'ronin-server' )
 const database  = require( 'ronin-database' )
 const mocks     = require( 'ronin-mocks' )
 
@@ -19,7 +19,7 @@ async function main() {
 		console.log( result )
 
 	} catch( reason ) {
-    console.error( reason.stack || reason )
+    	console.error( reason.stack || reason )
 	}
 
 }

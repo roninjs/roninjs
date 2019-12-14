@@ -58,18 +58,18 @@ async function authorizeRequest( permission, req, res, next ) {
 			if( permissionGranted ) {
 				return next()	
 			} else {
-				return next( new errors.http.ForbiddenError() )
+				return next( errors.http.ForbiddenError() )
 			}
 			
 		} catch( error ) {
 			log.error( error )
-			return next( new errors.InternalServerError() )
+			return next( errors.server.InternalServerError() )
 		}
 	} else {
 		if( authenticatedStatus === security.status.UNAUTHORIZED ) {
-			return next( new errors.UnauthorizedError('User is not authenticated') )
+			return next( errors.http.UnauthorizedError('User is not authenticated') )
 		} else {
-			return next( new errors.ForbiddenError('User is not authorized') )
+			return next(  errors.http.ForbiddenError('User is not authorized') )
 		}
 	}
 }
