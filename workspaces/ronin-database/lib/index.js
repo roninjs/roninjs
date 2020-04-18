@@ -20,8 +20,13 @@ async function connect( url, name = 'default' ) {
 	
 }
 
-function getConnection( name = 'default' ) {
-	return connections[ name ]
+async function getConnection( name = 'default' ) {
+	let connection = connections[ name ]
+	if( !connection ) {
+		connection = await connect( 'mongodb://localhost:27017/ronin' )
+	}
+
+	return connection
 }
 
 module.exports = {

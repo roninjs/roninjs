@@ -1,10 +1,20 @@
 const ronin 		= require( 'ronin-server' )
 const mocks 		= require( 'ronin-mocks' )
 
-const server = ronin.server()
+async function main() {
+	const server = ronin.server()
 
-server.use( '/services/m/', mocks.server( server.Router() ) )
+	server.use( '/services/m/', mocks.server( server.Router() ) )
 
-server
-	.start( result => console.log( result ) )
-	.catch( reason => console.error( reason ) )
+	try {
+		
+		const result = await server.start()
+		console.info( result )
+
+	} catch( error ) {
+		console.error( reason )
+	}
+
+}
+
+main()

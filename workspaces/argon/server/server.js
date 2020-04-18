@@ -1,5 +1,5 @@
 const config    = require( './config' )
-const ronin 	= require( 'ronin-server' )
+const ronin 		= require( 'ronin-server' )
 const database  = require( 'ronin-database' )
 const mocks     = require( 'ronin-mocks' )
 

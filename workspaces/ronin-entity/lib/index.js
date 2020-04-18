@@ -7,14 +7,22 @@ class Entity {
 
 	constructor( collection ) {
 		this.collection = collection
-		this.db = database.getConnection()
 	}
 
 	static ObjectID( value ) {
 		return new ObjectID( value )
 	}
 
+	async initConnection() {
+		if( !this.db ) {
+			this.db = await database.getConnection()
+		}
+		return this.db
+	}
+
 	async aggregate( pipeline ) {
+		await this.initConnection()
+
 		try {
 			const collection = await this.db.collection( this.collection )
 			const results = await collection.aggregate( pipeline )
@@ -26,7 +34,9 @@ class Entity {
 		}
 	}
 
-	count( query ) {
+	async count( query ) {
+		await this.initConnection()
+
 		return this.db
 			.collection( this.collection )
 			.countDocuments( query )
@@ -36,7 +46,8 @@ class Entity {
 
 	}
 
-	find( query, { sort = {}, project = {}, limit, skip } = {} ) {
+	async find( query, { sort = {}, project = {}, limit, skip } = {} ) {
+		await this.initConnection()
 		log.debug( `${this.collection}.find` )
 		log.debug( JSON.stringify({ query, sort, project, limit, skip }) )
 
@@ -60,6 +71,7 @@ class Entity {
 	}
 
 	async findOne( query ) {
+		await this.initConnection()
 		try {
 			const collection = await this.db.collection( this.collection )
 			const result = await collection.findOne( query )
@@ -70,7 +82,8 @@ class Entity {
 		}
 	}
 
-	getById( id ) {
+	async getById( id ) {
+		await this.initConnection()
 		return this.db
 			.collection( this.collection )
 			.findOne( { _id: new ObjectID( id ) } )
@@ -79,7 +92,8 @@ class Entity {
 			})
 	}
 
-	insert( document ) {
+	async insert( document ) {
+		await this.initConnection()
 		return this.db
 			.collection( this.collection )
 			.insertOne( document )
@@ -88,7 +102,8 @@ class Entity {
 			})
 	}
 
-	updateById( id, update, withModifiers = false ) {
+	async updateById( id, update, withModifiers = false ) {
+		await this.initConnection()
 		let updateQuery = withModifiers ? update : { $set: update }
 		
 		delete update._id
@@ -98,7 +113,8 @@ class Entity {
 			.updateOne( { _id: new ObjectID( id ) }, updateQuery )
 	}
 
-	update( query, update, withModifiers = false ) {
+	async update( query, update, withModifiers = false ) {
+		await this.initConnection()
 		let updateQuery = withModifiers ? update : { $set: update }
 
 		return this.db
@@ -106,7 +122,8 @@ class Entity {
 			.updateMany( query, updateQuery, { multi: true } )
 	}
 
-	updateOne( query, update, withModifiers = false ) {
+	async updateOne( query, update, withModifiers = false ) {
+		await this.initConnection()
 		let updateQuery = withModifiers ? update : { $set: update }
 
 		return this.db
@@ -114,13 +131,15 @@ class Entity {
 			.updateOne( query, updateQuery )
 	}
 
-	deleteById( id ) {
+	async deleteById( id ) {
+		await this.initConnection()
 		return this.db
 			.collection( this.collection )
 			.deleteOne( { _id: new ObjectID( id ) } )	
 	}
 
-	delete( query ) {
+	async delete( query ) {
+		await this.initConnection()
 		return this.db
 			.collection( this.collection )
 			.deleteOne( query )	
