@@ -2,6 +2,7 @@ const moment 		= require( 'moment' )
 const errors 		= require( 'ronin-errors' )
 const pluralize = require( 'pluralize' )
 const log 			= require( 'ronin-logger' )
+const jwt				= require( 'jsonwebtoken' )
 
 const Entity = require( 'ronin-entity' )
 
@@ -29,14 +30,31 @@ async function login( req, res, next ) {
 
 	try {
 		const total = await store.count( query )
-		const results = await store.findOne( query )
+		const user = await store.findOne( query )
 
-		// if( results && results.length ) {
-		// 	const user = results
-		// }
+		let result = {}
+		if( user ) {
+			const passwordData = util.sha512( req.body.password, user.passwordSalt )
+			if( user.passwordHash === passwordData.hash ) {
+				const token = jwt.sign( JSON.stringify( {username: user.username, role: user.roles} ), req.context.secret )
+				result = {
+					status: 'success',
+					meta: { total: total, count: total },
+					payload: {
+						jwt: token
+					}
+				}
+			} else {
+				return next(  errors.http.ForbiddenError('User is not authorized') )
+			}
+
+		} else {
+			return next(  errors.http.ForbiddenError('User is not authorized') )
+		}
 		
 
-		return res.json({ code: 'success', meta: { total: total, count: total }, payload: results })
+		return res.json( result )
+
 	} catch( error ) {
 		throw error
 	}
@@ -62,7 +80,8 @@ async function createUser( req, res, next ) {
 		const newUser = {
 			username: req.body.username,
 			passwordHash: passwordData.hash,
-			passwordSalt: passwordData.salt
+			passwordSalt: passwordData.salt,
+			roles: req.body.roles
 		}
 
 		const currentUser = await store.findOne({ username: req.body.username })

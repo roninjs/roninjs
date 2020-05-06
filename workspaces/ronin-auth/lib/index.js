@@ -18,8 +18,8 @@ function setContext( req, res, next ) {
 function useServer( router, rbac ) {
 
   if( rbac ) {
-    router.post( `/login`,  setContext,                    handler.login )
-    router.post( `/create`, setContext, rbac.can.create(), handler.createUser )
+    router.post( `/login`,  setContext, handler.login )
+    router.post( `/create`, setContext, rbac.can.create( context.collection ), handler.createUser )
   } else {
     router.post( `/login`,  setContext, handler.login )
     router.post( `/create`, setContext, handler.createUser )

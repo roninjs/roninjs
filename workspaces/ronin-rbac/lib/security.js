@@ -55,13 +55,13 @@ async function authenticate( secret, req, res, next ) {
       } else {
         log.info( 'valid token' )
         const users = new Entity( config.usersCollection )
-        const query = { username: jwtPayload.preferred_username }
+        const query = { username: jwtPayload.username }
 
-        let userData = await users.aggregate( query )
-        if( userData && userData.length ) {
+        let userData = await users.findOne( query )
+        if( userData ) {
           log.info( 'user found' )
           log.debug( userData )
-          req.user = userData[0]
+          req.user = userData
 
           return status.AUTHENTICATED
         } else {
