@@ -1,17 +1,22 @@
 {
 	"name": "ronin-auth",
-	"version": "0.1.01",
+	"version": "0.1.03",
 	"description": "Simple Auth",
 	"main": "lib/index.js",
 	"scripts": {
 		"test": "node ./test/index.js"
 	},
 	"author": "Peter McKee <peter.mckee@gmail.com>",
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"cookies": "^0.7.3",
 		"jsonwebtoken": "^8.3.0",
+		"pluralize": "^8.0.0",
 		"ronin-database": "^0.1.01",
+		"ronin-entity": "^0.1.3",
 		"ronin-logger": "^0.1.0"
+	},
+	"engines": {
+		"node": ">= 0.10.0"
 	}
 }

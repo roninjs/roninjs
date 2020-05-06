@@ -7,9 +7,12 @@
     "test": "node ./test/index.js"
   },
   "author": "Peter McKee <peter.mckee@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
     "moment": "^2.24.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
   }
 }
