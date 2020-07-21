@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -w ../../workspaces/ server.js"
+    "start": "nodemon -w ../../workspaces/ server.js",
+    "start-mocks": "nodemon -w ../../workspaces/ server-mocks.js"
   },
   "author": "",
   "license": "ISC",

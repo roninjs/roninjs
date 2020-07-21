@@ -1,12 +1,19 @@
 const log = require( 'ronin-logger' )
-const handler = require( './handlers' )
+let handler = require( './handlers' )
+const inMemoryHandler = require( './handlers/inmemory' )
 const database = require( 'ronin-database' )
 
-function useServer( router, rbac ) {
+function useServer( router, rbac, inmemory ) {
 
-  const db = database.getConnection()
-  if( !db ) {
-    throw new Error( 'Ronin database connection required. Please create a ronin-database connection before using the ronin-mocks server.' ).stack
+  let db = null
+
+  if( inmemory ) {
+    handler = inMemoryHandler
+  } else {
+    db = database.getConnection()
+    if( !db ) {
+      throw new Error( 'Ronin database connection required. Please create a ronin-database connection before using the ronin-mocks server.' ).stack
+    }
   }
 
   if( rbac ) {

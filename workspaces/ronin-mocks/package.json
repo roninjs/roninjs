@@ -1,6 +1,6 @@
 {
   "name": "ronin-mocks",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Ronin mocks",
   "main": "lib/index.js",
   "scripts": {
@@ -8,11 +8,16 @@
     "local": "nodemon --trace-warnings ./test/index.js"
   },
   "author": "Peter McKee",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "ronin-logger": "^0.1.0",
+    "pluralize": "^8.0.0",
     "ronin-database": "^0.1.01",
     "ronin-entity": "^0.1.0",
-    "ronin-errors": "^0.1.0"
+    "ronin-errors": "^0.1.0",
+    "ronin-logger": "^0.1.0",
+    "uuid": "^8.2.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
   }
 }

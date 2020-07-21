@@ -38,7 +38,7 @@ async function login( req, res, next ) {
 			if( user.passwordHash === passwordData.hash ) {
 				const token = jwt.sign( JSON.stringify( {username: user.username, role: user.roles} ), req.context.secret )
 				result = {
-					status: 'success',
+					code: 'success',
 					meta: { total: total, count: total },
 					payload: {
 						jwt: token

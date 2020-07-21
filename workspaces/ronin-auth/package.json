@@ -1,6 +1,6 @@
 {
 	"name": "ronin-auth",
-	"version": "0.1.03",
+	"version": "0.1.5",
 	"description": "Simple Auth",
 	"main": "lib/index.js",
 	"scripts": {

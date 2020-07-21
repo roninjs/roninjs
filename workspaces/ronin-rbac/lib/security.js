@@ -1,4 +1,3 @@
-const errors = require( 'restify-errors' )
 const jwt = require( 'jsonwebtoken' )
 const Cookies = require( 'cookies' )
 
