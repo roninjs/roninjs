@@ -55,20 +55,26 @@ function entityCreate( req, res, next ) {
 		return next( new errors.MissingParameterError( `Missing entity name` ) )
 	}
 
-  const entity = req.body
+	let entity = req.body
 	if( !entity ) {
 		return next( new errors.MissingParameterError( `Missing entity object` ) )
 	}
 
-  if( !entity.id ) {
-    entity.id = uuidv4()
-  }
-  entity.createDate = moment().toDate()
+	if( !Array.isArray( entity) ) {
+		entity = [entity]
+	}
+
+	entity.forEach( e => {
+		if( !e.id ) {
+			e.id = uuidv4()
+		}
+		e.createDate = moment().toDate()
+	})
 
   let store =  getDataStore( collection )
-  store.push( entity )
+  store.push( ...entity )
 
-  return res.json({ code: 'success', payload: entity })
+  return res.json({ code: 'success', payload: store })
 }
 
 function entityById( req, res, next ) {

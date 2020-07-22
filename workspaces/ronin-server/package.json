@@ -1,6 +1,6 @@
 {
   "name": "ronin-server",
-  "version": "0.1.01",
+  "version": "0.1.1",
   "description": "Ronin rest api server",
   "main": "lib/index.js",
   "scripts": {
