@@ -10,12 +10,13 @@
   "author": "Peter McKee <peter.mckee@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ronin-logger": "^0.1.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "express-fileupload": "^1.1.2-alpha.1"
+    "express-fileupload": "^1.1.2-alpha.1",
+    "ronin-logger": "^0.1.0",
+    "stoppable": "^1.1.0"
   },
   "engines": {
     "node": ">= 0.10.0"

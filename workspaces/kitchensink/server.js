@@ -1,50 +1,29 @@
-const config 		= require( './config' )
-const log 			= require( 'ronin-logger' )
 const ronin 		= require( 'ronin-server' )
 const mocks 		= require( 'ronin-mocks' )
-const database 	= require( 'ronin-database' )
-const auth			= require( 'ronin-auth' )
-const rbac			= require( 'ronin-rbac' )
 
 async function main() {
-	
+
 	try {
-		await database.connect( config.database.connectionstring )
-
-		const server = ronin.server({
-			port: config.server.port || 8080
+    const server = ronin.server({
+			port: 8080
 		})
 
-		auth.init({
-			secret: config.rbac.secret,
-			usersCollection: config.rbac.usersCollection
-		})
+		server.use( '/services/m/', mocks.server( server.Router(), false, true ) )
 
-		rbac.init({	
-			secret: config.rbac.secret,
-			usersCollection: config.rbac.usersCollection,
-			permissions: {
-				"admin": [{
-					"entity": "*",
-					"permissions": [ "*" ]
-				}],
-				"read-only": [{
-					"entity": "*",
-					"permissions": [ "read" ]
-				}]
-			}
-		})
+    const result = await server.start()
+    console.info( result )
 
-		server.use( '/services/m/auth', auth.server( server.Router(), rbac ) )
-		server.use( '/services/m/', mocks.server( server.Router() ) )
-
-		const result = await server.start()
-		log.info( result )
-
-	} catch( reason ) {
-		log.error( reason )
+	} catch( error ) {
+		console.error( error )
 	}
-
 }
+
+function shutdown( signal ) {
+	console.info( `[${signal}] shutting down...` )
+	process.exit()
+}
+
+process.on( 'SIGINT', () => shutdown( 'SIGINT' ) )
+process.on( 'SIGTERM', () => shutdown( 'SIGTERM' ) )
 
 main()

@@ -1,11 +1,12 @@
-const http			= require( 'http' )
-const express 		= require( 'express' )
-const fileUpload 	= require( 'express-fileupload' )
-const cors 			= require( 'cors' )
+const http					= require( 'http' )
+const express 			= require( 'express' )
+const stoppable			= require( 'stoppable' )
+const fileUpload 		= require( 'express-fileupload' )
+const cors 					= require( 'cors' )
 const cookieParser	= require( 'cookie-parser' )
-const bodyParser 	= require( 'body-parser' )
+const bodyParser 		= require( 'body-parser' )
 
-const log 			= require( 'ronin-logger' )
+const log 					= require( 'ronin-logger' )
 
 function server( config = {} ) {
 	const app = express()
@@ -47,7 +48,8 @@ function server( config = {} ) {
 				}
 			} )
 	
-			const httpServer = http.createServer( app )
+			// const httpServer = http.createServer( app )
+			const httpServer = stoppable( http.createServer( app ) )
 			httpServer.on( 'error', error => {
 				if ( error.syscall !== 'listen' ) {
 					return reject( error )

@@ -16,6 +16,7 @@
     "ronin-database": "^0.1.01",
     "ronin-entity": "^0.1.0",
     "ronin-logger": "^0.1.0",
+    "ronin-mocks": "^0.1.4",
     "ronin-rbac": "^0.1.0",
     "ronin-server": "^0.1.0"
   },
