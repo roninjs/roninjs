@@ -90,7 +90,7 @@ function entityById( req, res, next ) {
 
 	const store = getDataStore( collection )
   
-  const results = store.find( item => item.id === req.params.id )
+  const results = store.find( item => item.id == req.params.id )
 
 	return res.json({ code: 'success', payload: results })
 }
