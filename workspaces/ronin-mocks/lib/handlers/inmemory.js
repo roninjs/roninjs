@@ -90,7 +90,8 @@ function entityById( req, res, next ) {
 
 	const store = getDataStore( collection )
   
-  const results = store.find( item => item.id == req.params.id )
+	let results = store.find( item => item.id == req.params.id )
+	results = results || {}
 
 	return res.json({ code: 'success', payload: results })
 }
@@ -114,7 +115,7 @@ async function entityUpdate( req, res, next ) {
   const store = getDataStore( collection )
   for( let i = 0; i < store.length; i++ ) {
     let item = store[i]
-    if( item.id === id ) {
+    if( item.id == id ) {
       store[i] = update
       store[i].id = id
     }
