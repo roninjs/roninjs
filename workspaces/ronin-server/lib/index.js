@@ -90,6 +90,14 @@ function server( config = {} ) {
 		return express.Router()
 	}
 
+	function shutdown( signal ) {
+		console.info( `shutting down...` )
+		process.exit()
+	}
+	
+	process.on( 'SIGINT', () => shutdown( 'SIGINT' ) )
+	process.on( 'SIGTERM', () => shutdown( 'SIGTERM' ) )
+	
 	return app
 }
 
