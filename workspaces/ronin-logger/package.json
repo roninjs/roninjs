@@ -1,6 +1,6 @@
 {
   "name": "ronin-logger",
-  "version": "0.1.01",
+  "version": "0.1.1",
   "description": "Simple loging with color",
   "main": "lib/index.js",
   "scripts": {

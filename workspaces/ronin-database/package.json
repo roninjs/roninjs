@@ -1,6 +1,6 @@
 {
 	"name": "ronin-database",
-	"version": "0.1.01",
+	"version": "0.1.1",
 	"description": "Simple MongoDb connection manager",
 	"main": "lib/index.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"mongodb": "^3.2.1",
-		"ronin-logger": "^0.1.01"
+		"ronin-logger": "^0.1.1"
 	},
 	"engines": {
     "node": ">= 0.10.0"

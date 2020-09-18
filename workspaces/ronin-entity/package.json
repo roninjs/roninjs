@@ -1,6 +1,6 @@
 {
 	"name": "ronin-entity",
-	"version": "0.1.03",
+	"version": "0.1.3",
 	"description": "Simple MongoDB ORM",
 	"main": "lib/index.js",
 	"scripts": {

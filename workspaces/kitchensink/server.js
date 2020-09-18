@@ -18,12 +18,4 @@ async function main() {
 	}
 }
 
-function shutdown( signal ) {
-	console.info( `[${signal}] shutting down...` )
-	process.exit()
-}
-
-process.on( 'SIGINT', () => shutdown( 'SIGINT' ) )
-process.on( 'SIGTERM', () => shutdown( 'SIGTERM' ) )
-
 main()

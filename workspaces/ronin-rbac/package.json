@@ -1,6 +1,6 @@
 {
 	"name": "ronin-rbac",
-	"version": "0.1.01",
+	"version": "0.1.1",
 	"description": "Simple RBAC",
 	"main": "lib/index.js",
 	"scripts": {

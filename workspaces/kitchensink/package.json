@@ -13,12 +13,12 @@
   "dependencies": {
     "lodash": "^4.17.19",
     "pluralize": "^7.0.0",
-    "ronin-database": "^0.1.01",
-    "ronin-entity": "^0.1.0",
-    "ronin-logger": "^0.1.0",
-    "ronin-mocks": "^0.1.4",
-    "ronin-rbac": "^0.1.0",
-    "ronin-server": "^0.1.0"
+    "ronin-database": "^0.1.1",
+    "ronin-entity": "^0.1.3",
+    "ronin-logger": "^0.1.1",
+    "ronin-mocks": "^0.1.6",
+    "ronin-rbac": "^0.1.1",
+    "ronin-server": "^0.1.3"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
