@@ -10,7 +10,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"jsonwebtoken": "^8.3.0",
-		"lodash": "^4.17.15",
+		"lodash": "^4.17.21",
 		"mongodb": "^3.2.1",
 		"restify-errors": "^7.0.0",
 		"ronin-database": "^0.1.01",
