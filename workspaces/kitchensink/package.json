@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "pluralize": "^7.0.0",
     "ronin-database": "^0.1.1",
     "ronin-entity": "^0.1.3",
