@@ -10,7 +10,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"cookies": "^0.7.3",
-		"jsonwebtoken": "^8.3.0",
+		"jsonwebtoken": "^9.0.0",
 		"ronin-database": "^0.1.0",
 		"ronin-logger": "^0.1.0"
 	},

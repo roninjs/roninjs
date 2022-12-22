@@ -9,7 +9,7 @@
 	"author": "Peter McKee <peter.mckee@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
-		"jsonwebtoken": "^8.3.0",
+		"jsonwebtoken": "^9.0.0",
 		"lodash": "^4.17.15",
 		"mongodb": "^3.2.1",
 		"restify-errors": "^7.0.0",
