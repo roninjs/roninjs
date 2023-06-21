@@ -16,6 +16,7 @@ async function main() {
 		
 		await database.connect( config.database.connectionstring )
 
+
 		const server = ronin.server({
 			port: config.server.port || 8080
 		})
