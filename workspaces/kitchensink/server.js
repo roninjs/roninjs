@@ -9,7 +9,13 @@ const rbac			= require( 'ronin-rbac' )
 async function main() {
 	
 	try {
+		var connectionstring = {
+			username: "admin",
+			password: "password"
+		}
+		
 		await database.connect( config.database.connectionstring )
+
 
 		const server = ronin.server({
 			port: config.server.port || 8080
